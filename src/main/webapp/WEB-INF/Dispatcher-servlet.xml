@@ -7,6 +7,8 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
     <mvc:annotation-driven/>
@@ -15,6 +17,38 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+        <property name="driverType" value="oracle.jdbc.OracleDriver"></property>
+        <property name="URL" value="jdbc:oracle:thin:@localhost:1522:XE" />
+        <property name="user" value="hr"/>
+        <property name="password" value="hr"/>
 
+    </bean>
+    <bean id="hibernate4AnnotatedSessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.bartek.dao.Product</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+            </props>
+        </property>
+
+    </bean>
+    <bean id="productDAO"
+          class="com.bartek.dao.repository.impl.ProductDAOImpl">
+        <property name="sessionFactory"
+                  ref="hibernate4AnnotatedSessionFactory"></property>
+    </bean>
+    <bean id="productService"
+          class="com.bartek.service.impl.ProductServiceImpl">
+        <property name="productDAO" ref="productDAO">
+
+        </property>   </bean>
+   
 
 </beans>
