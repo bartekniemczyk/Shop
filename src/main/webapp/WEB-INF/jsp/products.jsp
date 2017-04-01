@@ -15,8 +15,8 @@
 <section>
     <div class="barto">
         <div class="container">
-            <h1>Produkty</h1>
-            <p>Wszytskie produkty dostępne w naszym sklepie</p>
+            <h1>Produkty:</h1>
+
         </div>
     </div>
 </section>
@@ -24,16 +24,16 @@
 
     <div class="row">
         <c:forEach items="${products}" var="product">
-        <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p>${product.unitPrice}PLN</p>
-                    <p>Liczba sztuk w magazynie: ${product.unitsInStock}</p>
+            <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p>${product.unitPrice}PLN</p>
+                        <p>Liczba sztuk w magazynie: ${product.unitsInStock}</p>
+                    </div>
                 </div>
             </div>
-        </div>
         </c:forEach>
     </div>
 </section>

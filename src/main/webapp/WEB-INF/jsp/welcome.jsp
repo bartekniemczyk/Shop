@@ -15,10 +15,11 @@
    <div class="barto">
        <div class="container">
 
-               <a href="products">Wszytskie produkty</a>
+
 
            <h1>${greetings}</h1>
            <p>${tagline}</p>
+           <a href="products">Wszytskie produkty</a>
        </div>
    </div>
 </section>

@@ -3,6 +3,7 @@ package com.bartek.service.impl;
 import com.bartek.dao.Product;
 import com.bartek.dao.repository.ProductDAO;
 import com.bartek.service.ProductService;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by Bartek on 29.03.2017.
  */
+@Service
 public class ProductServiceImpl implements ProductService {
     private ProductDAO productDAO;
 
@@ -17,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
         this.productDAO = productDAO;
     }
 
-    @Transactional
+
     @Override
     public List<Product> getAllProducts() {
         return this.productDAO.getAllProducts();
@@ -35,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    @Transactional
+
     @Override
     public void updateProduct(Product product) {
         this.productDAO.updateProduct(product);

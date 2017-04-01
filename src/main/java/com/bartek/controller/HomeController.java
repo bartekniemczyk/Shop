@@ -12,8 +12,8 @@ public class HomeController {
 
     @RequestMapping(value = "/")
     public String welcome(Model model){
-        model.addAttribute("greetings","Wiataj w moim sklepie internetowym");
-        model.addAttribute("tagline","Wyjątkowym sklepie");
+        model.addAttribute("greetings","RTV EURO AGD");
+        model.addAttribute("tagline","Zapraszamy do zakupów");
         return "welcome";
     }
 }

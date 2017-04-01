@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -31,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    @SuppressWarnings("unchecked")
+
     @Override
     public List<Product> getAllProducts() {
         Session session = getSessionFactory().openSession();
@@ -43,6 +44,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    @Transactional
     public Product getProductByID(int productId) {
         Session session = this.sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
