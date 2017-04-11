@@ -6,7 +6,10 @@ import com.bartek.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Bartek on 29.03.2017.
@@ -25,6 +28,10 @@ public class ProductServiceImpl implements ProductService {
         return this.productDAO.getAllProducts();
     }
 
+    @Override
+    public void addProduct(Product product) {
+        productDAO.addProdukt(product);
+    }
 
     @Override
     public void processOrder(int productId, int count) {
@@ -37,10 +44,34 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    @Override
+    public List<Product> getProductByCategory(String category) {
+        return this.productDAO.getProductByCategory(category);
+    }
 
     @Override
     public void updateProduct(Product product) {
         this.productDAO.updateProduct(product);
+    }
+
+    @Override
+    public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
+        return this.productDAO.getProductByFilter(filterParams);
+    }
+
+    @Override
+    public Product getProductByID(int productId) {
+        return productDAO.getProductByID(productId);
+    }
+
+    @Override
+    public List<Product> getProductsInPriceRange(BigDecimal min, BigDecimal max) {
+        return productDAO.getProductsInPriceRange(min, max);
+    }
+
+    @Override
+    public List<Product> getProductByManufacturer(String manufacturer) {
+        return productDAO.getProductByManufacturer(manufacturer);
     }
 
 

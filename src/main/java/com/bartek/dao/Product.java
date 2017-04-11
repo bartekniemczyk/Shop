@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 public class Product {
     @Id
     @Column(name = "PRODUCTID")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int productId;
     @Column(name = "NAME")
     private String name;

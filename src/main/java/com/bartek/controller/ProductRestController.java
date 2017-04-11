@@ -35,4 +35,5 @@ return products;
                 .filter(product -> Objects.equals(product.getCategory(),category))
                 .collect(Collectors.toList());
     }
+
 }
